@@ -85,10 +85,6 @@
       <Project>{540c73c1-8596-40c1-8df0-8a26205a5895}</Project>
       <Name>DataTransferObjects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{36066b87-5005-4ad2-b10a-00bb3895bf50}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logica\Logica.csproj">
       <Project>{AC0E1D5C-BA2F-4FAD-B2B7-10C24A508942}</Project>
       <Name>Logica</Name>
