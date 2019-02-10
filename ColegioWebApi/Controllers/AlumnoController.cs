@@ -31,12 +31,25 @@ namespace ColegioWebApi.Controllers
         }
 
         // GET api/<controller>/5
-        public Alumno Get(int id)
+        public AlumnoResponse Get(int id)
         {
-            using (var ctx = new ContextoDb())
+            var response = new AlumnoResponse();
+            try
             {
-                return ctx.GetAlumno(id);
+                using (var ctx = new ContextoDb())
+                {
+                    response.Alumno = ctx.GetAlumno(id);
+                }
+
+                response.Exito = true;
             }
+            catch (Exception ex)
+            {
+                response.Exito = false;
+                response.MensajeError = ex.Message;
+            }
+
+            return response;
         }
 
         // POST api/<controller>
@@ -58,6 +71,7 @@ namespace ColegioWebApi.Controllers
                     };
 
                     ctx.Set<Alumno>().Add(entidad);
+                    response.Alumno = entidad;
                     response.Exito = ctx.SaveChanges() > 0;
                 }
             }
@@ -90,8 +104,8 @@ namespace ColegioWebApi.Controllers
                     entidad.FechaNacimiento = value.FechaNacimiento;
 
                     ctx.Set<Alumno>().Add(entidad);
+                    response.Alumno = entidad;
                     response.Exito = ctx.SaveChanges() > 0;
-                    response.AlumnoId = entidad.Id;
                 }
             }
             catch (Exception ex)
@@ -118,7 +132,7 @@ namespace ColegioWebApi.Controllers
 
                     ctx.Set<Alumno>().Remove(entidad);
 
-                    ctx.SaveChanges();
+                    response.Exito = ctx.SaveChanges() > 0;
                 }
             }
             catch (Exception ex)

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using DataTransferObjects.Comun;
+﻿using DataTransferObjects.Comun;
+using System.Collections.Generic;
 using Entidades;
 
 namespace DataTransferObjects.Response
 {
     public class ListadoAlumnosResponse : BaseResponse
     {
-        public List<Alumno> ListaAlumnos { get; set; }
+        public List<Alumno> ListaAlumnos { get; }
 
         public ListadoAlumnosResponse()
         {
