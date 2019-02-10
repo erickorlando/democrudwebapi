@@ -57,16 +57,17 @@
             this.correoElectronicoTextBox = new System.Windows.Forms.TextBox();
             this.fechaNacimientoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.alumnoDataGridView = new System.Windows.Forms.DataGridView();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnListar = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listadoAlumnosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnListar = new System.Windows.Forms.Button();
             nombresLabel = new System.Windows.Forms.Label();
             apellidosLabel = new System.Windows.Forms.Label();
             edadLabel = new System.Windows.Forms.Label();
@@ -76,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.alumnoBindingNavigator)).BeginInit();
             this.alumnoBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alumnoDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoAlumnosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nombresLabel
@@ -125,7 +127,7 @@
             // 
             // alumnoBindingSource
             // 
-            this.alumnoBindingSource.DataSource = typeof(Entidades.Alumno);
+            this.alumnoBindingSource.DataSource = typeof(DataTransferObjects.Dto.AlumnoDto);
             // 
             // alumnoBindingNavigator
             // 
@@ -307,7 +309,7 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.alumnoDataGridView.DataSource = this.alumnoBindingSource;
+            this.alumnoDataGridView.DataSource = this.listadoAlumnosBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -319,8 +321,53 @@
             this.alumnoDataGridView.Location = new System.Drawing.Point(15, 188);
             this.alumnoDataGridView.Name = "alumnoDataGridView";
             this.alumnoDataGridView.ReadOnly = true;
+            this.alumnoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.alumnoDataGridView.Size = new System.Drawing.Size(672, 297);
             this.alumnoDataGridView.TabIndex = 11;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Nombres";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombres";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Apellidos";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Apellidos";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Edad";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Edad";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 56;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "CorreoElectronico";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Correo Electronico";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaNacimiento";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Fecha Nacimiento";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 106;
+            // 
+            // listadoAlumnosBindingSource
+            // 
+            this.listadoAlumnosBindingSource.DataSource = typeof(DataTransferObjects.Dto.AlumnoDto);
             // 
             // btnNuevo
             // 
@@ -366,46 +413,7 @@
             this.btnListar.TabIndex = 12;
             this.btnListar.Text = "Li&star";
             this.btnListar.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Nombres";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombres";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Apellidos";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Apellidos";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Edad";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Edad";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 56;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "CorreoElectronico";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Correo Electronico";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaNacimiento";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Fecha Nacimiento";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 116;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // FrmAlumno
             // 
@@ -439,6 +447,7 @@
             this.alumnoBindingNavigator.ResumeLayout(false);
             this.alumnoBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alumnoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoAlumnosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,6 +485,7 @@
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.BindingSource listadoAlumnosBindingSource;
     }
 }
 

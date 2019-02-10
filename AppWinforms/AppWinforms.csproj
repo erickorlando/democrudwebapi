@@ -66,8 +66,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\Entidades.Alumno.datasource" />
-    <None Include="Properties\DataSources\Entidades.Curso.datasource" />
+    <None Include="Properties\DataSources\DataTransferObjects.Dto.AlumnoDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +88,10 @@
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{36066b87-5005-4ad2-b10a-00bb3895bf50}</Project>
       <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{AC0E1D5C-BA2F-4FAD-B2B7-10C24A508942}</Project>
+      <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

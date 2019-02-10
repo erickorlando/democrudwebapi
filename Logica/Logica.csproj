@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{540C73C1-8596-40C1-8DF0-8A26205A5895}</ProjectGuid>
+    <ProjectGuid>{AC0E1D5C-BA2F-4FAD-B2B7-10C24A508942}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataTransferObjects</RootNamespace>
-    <AssemblyName>DataTransferObjects</AssemblyName>
+    <RootNamespace>Logica</RootNamespace>
+    <AssemblyName>Logica</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,9 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,18 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\AlumnoDto.cs" />
-    <Compile Include="Request\AlumnoRequest.cs" />
-    <Compile Include="Request\FiltroComunRequest.cs" />
-    <Compile Include="Response\AlumnoResponse.cs" />
-    <Compile Include="Comun\BaseResponse.cs" />
-    <Compile Include="Request\CursoRequest.cs" />
-    <Compile Include="Response\CursoResponse.cs" />
+    <Compile Include="AlumnoClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Response\ListadoAlumnosResponse.cs" />
-    <Compile Include="Response\ListadoCursosResponse.cs" />
+    <Compile Include="RestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataTransferObjects\DataTransferObjects.csproj">
+      <Project>{540C73C1-8596-40C1-8DF0-8A26205A5895}</Project>
+      <Name>DataTransferObjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{36066B87-5005-4AD2-B10A-00BB3895BF50}</Project>
       <Name>Entidades</Name>

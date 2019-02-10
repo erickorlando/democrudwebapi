@@ -3,23 +3,40 @@ using DataTransferObjects.Response;
 using Datos;
 using Entidades;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using DataTransferObjects.Dto;
 
 namespace ColegioWebApi.Controllers
 {
+    [RoutePrefix("api/Alumno")]
     public class AlumnoController : ApiController
     {
-        // GET api/<controller>
-        public ListadoAlumnosResponse Get()
+        [HttpPost]
+        [Route("GetAll")]
+        public ListadoAlumnosResponse GetAll(FiltroComunRequest request)
         {
             var response = new ListadoAlumnosResponse();
             try
             {
+                var lista = new List<AlumnoDto>();
                 using (var ctx = new ContextoDb())
                 {
-                    response.ListaAlumnos.AddRange(ctx.GetAllAlumnos());
+                    var allAlumnos = ctx.GetAllAlumnos(request.Filtro);
+
+                    lista.AddRange(allAlumnos.Select(alumno => new AlumnoDto
+                    {
+                        Id = alumno.Id,
+                        Nombres = alumno.Nombres,
+                        Apellidos = alumno.Apellidos,
+                        CorreoElectronico = alumno.CorreoElectronico,
+                        Edad = alumno.Edad,
+                        FechaNacimiento = alumno.FechaNacimiento
+                    }));
                 }
 
+                response.ListaAlumnos = lista;
                 response.Exito = true;
             }
             catch (Exception ex)
@@ -30,15 +47,16 @@ namespace ColegioWebApi.Controllers
             return response;
         }
 
-        // GET api/<controller>/5
-        public AlumnoResponse Get(int id)
+        [HttpPost]
+        [Route("Get")]
+        public AlumnoResponse Get(FiltroComunRequest request)
         {
             var response = new AlumnoResponse();
             try
             {
                 using (var ctx = new ContextoDb())
                 {
-                    response.Alumno = ctx.GetAlumno(id);
+                    response.Alumno = ctx.GetAlumno(request.Id);
                 }
 
                 response.Exito = true;
@@ -52,7 +70,8 @@ namespace ColegioWebApi.Controllers
             return response;
         }
 
-        // POST api/<controller>
+        [HttpPost]
+        [Route("Post")]
         public AlumnoResponse Post([FromBody]AlumnoRequest value)
         {
             var response = new AlumnoResponse();
@@ -84,15 +103,16 @@ namespace ColegioWebApi.Controllers
             return response;
         }
 
-        // PUT api/<controller>/5
-        public AlumnoResponse Put(int id, [FromBody]AlumnoRequest value)
+        [HttpPut]
+        [Route("Put")]
+        public AlumnoResponse Put([FromBody]AlumnoRequest value)
         {
             var response = new AlumnoResponse();
             try
             {
                 using (var ctx = new ContextoDb())
                 {
-                    var entidad = ctx.GetAlumno(id);
+                    var entidad = ctx.GetAlumno(value.Id);
 
                     if (entidad == null)
                         throw new InvalidOperationException("Registro no existe");
@@ -116,16 +136,17 @@ namespace ColegioWebApi.Controllers
 
             return response;
         }
-
-        // DELETE api/<controller>/5
-        public AlumnoResponse Delete(int id)
+        
+        [HttpDelete]
+        [Route("Delete")]
+        public AlumnoResponse Delete(FiltroComunRequest request)
         {
             var response = new AlumnoResponse();
             try
             {
                 using (var ctx = new ContextoDb())
                 {
-                    var entidad = ctx.GetAlumno(id);
+                    var entidad = ctx.GetAlumno(request.Id);
 
                     if (entidad == null)
                         throw new InvalidOperationException("Registro no existe");

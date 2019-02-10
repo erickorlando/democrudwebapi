@@ -25,9 +25,15 @@ namespace Datos
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public IEnumerable<Alumno> GetAllAlumnos()
+        public IEnumerable<Alumno> GetAllAlumnos(string filtro)
         {
-            return Alumnos.ToList();
+            var lista = from db in Alumnos
+                        select db;
+
+            if (!string.IsNullOrEmpty(filtro))
+                lista = lista.Where(p => p.Nombres.Contains(filtro));
+
+            return lista.AsNoTracking().ToList();
         }
 
         public Alumno GetAlumno(int id)
