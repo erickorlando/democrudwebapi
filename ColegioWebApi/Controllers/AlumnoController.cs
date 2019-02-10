@@ -1,12 +1,13 @@
-﻿using DataTransferObjects.Request;
+﻿using DataTransferObjects.Dto;
+using DataTransferObjects.Request;
 using DataTransferObjects.Response;
 using Datos;
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
-using DataTransferObjects.Dto;
 
 namespace ColegioWebApi.Controllers
 {
@@ -56,7 +57,19 @@ namespace ColegioWebApi.Controllers
             {
                 using (var ctx = new ContextoDb())
                 {
-                    response.Alumno = ctx.GetAlumno(request.Id);
+                    var entidad = ctx.GetAlumno(request.Id);
+                    if (entidad == null)
+                        throw new InvalidOperationException("No se encuentra el registro");
+
+                    response.Alumno = new AlumnoDto
+                    {
+                        Id = entidad.Id,
+                        Nombres = entidad.Nombres,
+                        Apellidos = entidad.Apellidos,
+                        CorreoElectronico = entidad.CorreoElectronico,
+                        Edad = entidad.Edad,
+                        FechaNacimiento = entidad.FechaNacimiento,
+                    };
                 }
 
                 response.Exito = true;
@@ -90,7 +103,7 @@ namespace ColegioWebApi.Controllers
                     };
 
                     ctx.Set<Alumno>().Add(entidad);
-                    response.Alumno = entidad;
+                    AsignarDto(response, entidad);
                     response.Exito = ctx.SaveChanges() > 0;
                 }
             }
@@ -101,6 +114,19 @@ namespace ColegioWebApi.Controllers
             }
 
             return response;
+        }
+
+        private static void AsignarDto(AlumnoResponse response, Alumno entidad)
+        {
+            response.Alumno = new AlumnoDto
+            {
+                Id = entidad.Id,
+                Nombres = entidad.Nombres,
+                Apellidos = entidad.Apellidos,
+                CorreoElectronico = entidad.CorreoElectronico,
+                Edad = entidad.Edad,
+                FechaNacimiento = entidad.FechaNacimiento,
+            };
         }
 
         [HttpPut]
@@ -123,8 +149,10 @@ namespace ColegioWebApi.Controllers
                     entidad.Edad = value.Edad;
                     entidad.FechaNacimiento = value.FechaNacimiento;
 
-                    ctx.Set<Alumno>().Add(entidad);
-                    response.Alumno = entidad;
+                    ctx.Set<Alumno>().Attach(entidad);
+                    ctx.Entry(entidad).State = EntityState.Modified;
+
+                    AsignarDto(response, entidad);
                     response.Exito = ctx.SaveChanges() > 0;
                 }
             }
@@ -136,7 +164,7 @@ namespace ColegioWebApi.Controllers
 
             return response;
         }
-        
+
         [HttpDelete]
         [Route("Delete")]
         public AlumnoResponse Delete(FiltroComunRequest request)
@@ -151,7 +179,8 @@ namespace ColegioWebApi.Controllers
                     if (entidad == null)
                         throw new InvalidOperationException("Registro no existe");
 
-                    ctx.Set<Alumno>().Remove(entidad);
+                    ctx.Set<Alumno>().Attach(entidad);
+                    ctx.Entry(entidad).State = EntityState.Deleted;
 
                     response.Exito = ctx.SaveChanges() > 0;
                 }

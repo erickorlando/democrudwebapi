@@ -1,11 +1,10 @@
-﻿using System;
-using DataTransferObjects.Comun;
-using Entidades;
+﻿using DataTransferObjects.Comun;
+using DataTransferObjects.Dto;
 
 namespace DataTransferObjects.Response
 {
     public class AlumnoResponse : BaseResponse
     {
-        public Alumno Alumno { get; set; }
+        public AlumnoDto Alumno { get; set; }
     }
 }
