@@ -1,0 +1,30 @@
+﻿<Window x:Class="AppWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppWpf"
+        mc:Ignorable="d"
+        Title="Demo de CRUD con Web API y EF" Height="400" Width="600" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="150*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="282*"/>
+            <ColumnDefinition Width="235*"/>
+            <ColumnDefinition Width="277*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Button x:Name="btnAlumnos" Grid.Column="1" Grid.Row="1" Click="BtnAlumnos_OnClick">Alumnos</Button>
+        <Button x:Name="btnCursos" Grid.Column="1" Grid.Row="3" Click="BtnCursos_OnClick">Cursos</Button>
+
+    </Grid>
+</Window>

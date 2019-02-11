@@ -15,5 +15,10 @@ namespace DataTransferObjects.Dto
         public string CorreoElectronico { get; set; }
 
         public DateTime FechaNacimiento { get; set; }
+
+        public AlumnoDto()
+        {
+            FechaNacimiento = DateTime.Today.AddYears(-18);
+        }
     }
 }

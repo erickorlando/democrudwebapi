@@ -8,5 +8,10 @@ namespace DataTransferObjects.Dto
         public string NombreCurso { get; set; }
         public DateTime FechaInicio { get; set; }
         public string NombreProfesor { get; set; }
+
+        public CursoDto()
+        {
+            FechaInicio = DateTime.Today.AddMonths(1);
+        }
     }
 }
