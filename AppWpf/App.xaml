@@ -5,7 +5,28 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          <Style TargetType="{x:Type Window}">
-             <Setter Property="FontFamily" Value="Tahoma" />
+             <Setter Property="FontFamily" Value="Calibri" />
+             <Setter Property="Background">
+                 <Setter.Value>
+                     <LinearGradientBrush>
+                         <GradientStop Color="LightBlue" Offset="0" />
+                         <GradientStop Color="Azure" Offset="0.567" />
+                     </LinearGradientBrush>
+                 </Setter.Value>
+             </Setter>
          </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="LightBlue" Offset="0" />
+                        <GradientStop Color="Azure" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderBrush" Value="SteelBlue" />
+        </Style>
     </Application.Resources>
 </Application>
