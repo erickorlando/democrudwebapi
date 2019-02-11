@@ -41,9 +41,15 @@ namespace Datos
             return Alumnos.FirstOrDefault(p => p.Id == id);
         }
 
-        public IEnumerable<Curso> GetAllCursos()
+        public IEnumerable<Curso> GetAllCursos(string filtro)
         {
-            return Cursos.ToList();
+            var lista = from db in Cursos
+                        select db;
+
+            if (!string.IsNullOrEmpty(filtro))
+                lista = lista.Where(p => p.NombreCurso.Contains(filtro));
+
+            return lista.AsNoTracking().ToList();
         }
 
         public Curso GetCurso(int id)

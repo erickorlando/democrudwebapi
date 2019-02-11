@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\AlumnoDto.cs" />
+    <Compile Include="Dto\CursoDto.cs" />
     <Compile Include="Request\AlumnoRequest.cs" />
     <Compile Include="Request\FiltroComunRequest.cs" />
     <Compile Include="Response\AlumnoResponse.cs" />

@@ -1,19 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace DataTransferObjects.Request
+namespace DataTransferObjects.Dto
 {
-    public class CursoRequest
+    public class CursoDto
     {
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(60)]
         public string NombreCurso { get; set; }
         public DateTime FechaInicio { get; set; }
-
-        [Required]
-        [StringLength(100)]
         public string NombreProfesor { get; set; }
     }
 }

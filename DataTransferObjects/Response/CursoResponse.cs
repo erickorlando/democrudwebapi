@@ -1,9 +1,10 @@
 ﻿using DataTransferObjects.Comun;
+using DataTransferObjects.Dto;
 
 namespace DataTransferObjects.Response
 {
     public class CursoResponse : BaseResponse
     {
-        public int CursoId { get; set; }
+        public CursoDto Curso { get; set; }
     }
 }
