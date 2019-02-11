@@ -13,7 +13,7 @@ namespace AppWinforms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCurso());
+            Application.Run(new MainForm());
         }
     }
 }

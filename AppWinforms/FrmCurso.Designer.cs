@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCurso));
             System.Windows.Forms.Label nombreCursoLabel;
             System.Windows.Forms.Label nombreProfesorLabel;
             System.Windows.Forms.Label fechaInicioLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCurso));
             this.cursoDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cursoDtoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.listaCursosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
@@ -47,7 +48,6 @@
             this.nombreCursoTextBox = new System.Windows.Forms.TextBox();
             this.nombreProfesorTextBox = new System.Windows.Forms.TextBox();
             this.fechaInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.listaCursosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnListar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
@@ -66,6 +66,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaCursosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursoDtoDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // nombreCursoLabel
+            // 
+            nombreCursoLabel.AutoSize = true;
+            nombreCursoLabel.Location = new System.Drawing.Point(12, 49);
+            nombreCursoLabel.Name = "nombreCursoLabel";
+            nombreCursoLabel.Size = new System.Drawing.Size(79, 13);
+            nombreCursoLabel.TabIndex = 1;
+            nombreCursoLabel.Text = "Nombre Curso:";
+            // 
+            // nombreProfesorLabel
+            // 
+            nombreProfesorLabel.AutoSize = true;
+            nombreProfesorLabel.Location = new System.Drawing.Point(12, 76);
+            nombreProfesorLabel.Name = "nombreProfesorLabel";
+            nombreProfesorLabel.Size = new System.Drawing.Size(92, 13);
+            nombreProfesorLabel.TabIndex = 3;
+            nombreProfesorLabel.Text = "Nombre Profesor:";
+            // 
+            // fechaInicioLabel
+            // 
+            fechaInicioLabel.AutoSize = true;
+            fechaInicioLabel.Location = new System.Drawing.Point(12, 104);
+            fechaInicioLabel.Name = "fechaInicioLabel";
+            fechaInicioLabel.Size = new System.Drawing.Size(68, 13);
+            fechaInicioLabel.TabIndex = 5;
+            fechaInicioLabel.Text = "Fecha Inicio:";
             // 
             // cursoDtoBindingSource
             // 
@@ -97,6 +124,17 @@
             this.cursoDtoBindingNavigator.Size = new System.Drawing.Size(710, 25);
             this.cursoDtoBindingNavigator.TabIndex = 0;
             this.cursoDtoBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // listaCursosBindingSource
+            // 
+            this.listaCursosBindingSource.DataSource = typeof(DataTransferObjects.Dto.CursoDto);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -130,16 +168,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -162,17 +193,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // nombreCursoLabel
-            // 
-            nombreCursoLabel.AutoSize = true;
-            nombreCursoLabel.Location = new System.Drawing.Point(12, 49);
-            nombreCursoLabel.Name = "nombreCursoLabel";
-            nombreCursoLabel.Size = new System.Drawing.Size(79, 13);
-            nombreCursoLabel.TabIndex = 1;
-            nombreCursoLabel.Text = "Nombre Curso:";
             // 
             // nombreCursoTextBox
             // 
@@ -182,15 +204,6 @@
             this.nombreCursoTextBox.Size = new System.Drawing.Size(200, 21);
             this.nombreCursoTextBox.TabIndex = 2;
             // 
-            // nombreProfesorLabel
-            // 
-            nombreProfesorLabel.AutoSize = true;
-            nombreProfesorLabel.Location = new System.Drawing.Point(12, 76);
-            nombreProfesorLabel.Name = "nombreProfesorLabel";
-            nombreProfesorLabel.Size = new System.Drawing.Size(92, 13);
-            nombreProfesorLabel.TabIndex = 3;
-            nombreProfesorLabel.Text = "Nombre Profesor:";
-            // 
             // nombreProfesorTextBox
             // 
             this.nombreProfesorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cursoDtoBindingSource, "NombreProfesor", true));
@@ -199,15 +212,6 @@
             this.nombreProfesorTextBox.Size = new System.Drawing.Size(200, 21);
             this.nombreProfesorTextBox.TabIndex = 4;
             // 
-            // fechaInicioLabel
-            // 
-            fechaInicioLabel.AutoSize = true;
-            fechaInicioLabel.Location = new System.Drawing.Point(12, 104);
-            fechaInicioLabel.Name = "fechaInicioLabel";
-            fechaInicioLabel.Size = new System.Drawing.Size(68, 13);
-            fechaInicioLabel.TabIndex = 5;
-            fechaInicioLabel.Text = "Fecha Inicio:";
-            // 
             // fechaInicioDateTimePicker
             // 
             this.fechaInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cursoDtoBindingSource, "FechaInicio", true));
@@ -215,10 +219,6 @@
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
             this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(200, 21);
             this.fechaInicioDateTimePicker.TabIndex = 6;
-            // 
-            // listaCursosBindingSource
-            // 
-            this.listaCursosBindingSource.DataSource = typeof(DataTransferObjects.Dto.CursoDto);
             // 
             // btnListar
             // 
@@ -284,6 +284,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cursoDtoDataGridView.AutoGenerateColumns = false;
             this.cursoDtoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cursoDtoDataGridView.BackgroundColor = System.Drawing.Color.LightYellow;
             this.cursoDtoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cursoDtoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
@@ -302,18 +303,21 @@
             this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCurso";
             this.dataGridViewTextBoxColumn2.HeaderText = "Nombre Curso";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "FechaInicio";
             this.dataGridViewTextBoxColumn3.HeaderText = "Fecha de Inicio";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "NombreProfesor";
             this.dataGridViewTextBoxColumn4.HeaderText = "Nombre del Profesor";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // FrmCurso
             // 
